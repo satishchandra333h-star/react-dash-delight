@@ -14,7 +14,104 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      adoption_requests: {
+        Row: {
+          created_at: string
+          id: string
+          message: string | null
+          pet_id: string
+          requester_email: string
+          requester_name: string
+          requester_phone: string | null
+          status: Database["public"]["Enums"]["adoption_status"]
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message?: string | null
+          pet_id: string
+          requester_email: string
+          requester_name: string
+          requester_phone?: string | null
+          status?: Database["public"]["Enums"]["adoption_status"]
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string | null
+          pet_id?: string
+          requester_email?: string
+          requester_name?: string
+          requester_phone?: string | null
+          status?: Database["public"]["Enums"]["adoption_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "adoption_requests_pet_id_fkey"
+            columns: ["pet_id"]
+            isOneToOne: false
+            referencedRelation: "pets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pets: {
+        Row: {
+          age_months: number
+          breed: string | null
+          created_at: string
+          description: string | null
+          gender: string
+          id: string
+          image_url: string | null
+          is_neutered: boolean | null
+          is_vaccinated: boolean | null
+          name: string
+          shelter_location: string | null
+          species: Database["public"]["Enums"]["pet_species"]
+          status: Database["public"]["Enums"]["pet_status"]
+          updated_at: string
+          weight_kg: number | null
+        }
+        Insert: {
+          age_months?: number
+          breed?: string | null
+          created_at?: string
+          description?: string | null
+          gender?: string
+          id?: string
+          image_url?: string | null
+          is_neutered?: boolean | null
+          is_vaccinated?: boolean | null
+          name: string
+          shelter_location?: string | null
+          species?: Database["public"]["Enums"]["pet_species"]
+          status?: Database["public"]["Enums"]["pet_status"]
+          updated_at?: string
+          weight_kg?: number | null
+        }
+        Update: {
+          age_months?: number
+          breed?: string | null
+          created_at?: string
+          description?: string | null
+          gender?: string
+          id?: string
+          image_url?: string | null
+          is_neutered?: boolean | null
+          is_vaccinated?: boolean | null
+          name?: string
+          shelter_location?: string | null
+          species?: Database["public"]["Enums"]["pet_species"]
+          status?: Database["public"]["Enums"]["pet_status"]
+          updated_at?: string
+          weight_kg?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +120,9 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      adoption_status: "pending" | "approved" | "rejected"
+      pet_species: "dog" | "cat" | "rabbit" | "bird" | "other"
+      pet_status: "available" | "pending" | "adopted"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +249,10 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      adoption_status: ["pending", "approved", "rejected"],
+      pet_species: ["dog", "cat", "rabbit", "bird", "other"],
+      pet_status: ["available", "pending", "adopted"],
+    },
   },
 } as const
