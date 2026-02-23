@@ -1,11 +1,16 @@
 import { Search, Bell } from "lucide-react";
 
-const TopBar = () => {
+interface TopBarProps {
+  title?: string;
+  subtitle?: string;
+}
+
+const TopBar = ({ title = "Dashboard", subtitle = "PawHome Shelter Management" }: TopBarProps) => {
   return (
     <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4 pl-12 lg:pl-0">
       <div>
-        <h2 className="text-2xl font-bold text-foreground">Dashboard</h2>
-        <p className="text-sm text-muted-foreground">PawHome Shelter Management</p>
+        <h2 className="text-2xl font-bold text-foreground">{title}</h2>
+        <p className="text-sm text-muted-foreground">{subtitle}</p>
       </div>
       <div className="flex items-center gap-3">
         <div className="relative hidden sm:block">
