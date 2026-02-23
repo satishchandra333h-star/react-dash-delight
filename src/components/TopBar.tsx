@@ -2,18 +2,18 @@ import { Search, Bell } from "lucide-react";
 
 const TopBar = () => {
   return (
-    <header className="flex items-center justify-between mb-8">
+    <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4 pl-12 lg:pl-0">
       <div>
         <h2 className="text-2xl font-bold text-foreground">Dashboard</h2>
-        <p className="text-sm text-muted-foreground">Welcome back, Alex</p>
+        <p className="text-sm text-muted-foreground">PawHome Shelter Management</p>
       </div>
       <div className="flex items-center gap-3">
-        <div className="relative">
+        <div className="relative hidden sm:block">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <input
             type="text"
             placeholder="Search..."
-            className="bg-secondary border border-border rounded-lg pl-9 pr-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary w-56"
+            className="bg-secondary border border-border rounded-lg pl-9 pr-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary w-48"
           />
         </div>
         <button className="relative p-2.5 rounded-lg bg-secondary border border-border hover:bg-muted transition-colors">
