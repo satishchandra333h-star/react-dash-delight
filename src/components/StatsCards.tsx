@@ -22,7 +22,13 @@ const StatsCards = () => {
 
       setStats([
         { label: "Total Pets", value: String(total), change: "+3 this week", up: true, icon: PawPrint },
-        { label: "Available", value: String(available), change: `${Math.round((available / total) * 100)}% of total`, up: true, icon: Heart },
+        {
+          label: "Available",
+          value: String(available),
+          change: total === 0 ? "0% of total" : `${Math.round((available / total) * 100)}% of total`,
+          up: true,
+          icon: Heart,
+        },
         { label: "Pending", value: String(pending), change: `${pending} awaiting`, up: false, icon: Clock },
         { label: "Adopted", value: String(adopted), change: "Great news!", up: true, icon: CheckCircle },
       ]);
